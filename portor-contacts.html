@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portor Lighting Contacts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fa;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header h1 {
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .header-accent {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #00d4ff, #2cbcb0);
+      border-radius: 2px;
+    }
+
+    .hq-section {
+      background: #f1f5f9;
+      padding: 20px 32px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .hq-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hq-info h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .hq-info p {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .hq-contact {
+      text-align: right;
+    }
+
+    .hq-contact a {
+      display: block;
+      font-size: 13px;
+      color: #2cbcb0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hq-contact span {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1.3fr 1fr;
+      padding: 16px 32px;
+      border-bottom: 1px solid #f1f5f9;
+      align-items: center;
+    }
+
+    .contact-row:last-child {
+      border-bottom: none;
+    }
+
+    .contact-row:hover {
+      background: #fafbfc;
+    }
+
+    .contact-name h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+
+    .contact-name .title {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .contact-name .location {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .contact-role {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .contact-role .territory {
+      color: #2cbcb0;
+      font-weight: 500;
+    }
+
+    .contact-role .duties {
+      color: #94a3b8;
+      font-size: 11px;
+    }
+
+    .contact-info a {
+      display: block;
+      font-size: 12px;
+      color: #2cbcb0;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-info span {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .section-divider {
+      background: #f8fafc;
+      padding: 10px 32px;
+      border-bottom: 1px solid #e2e8f0;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .section-divider h4 {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Portor Lighting Contacts</h1>
+      <div class="header-accent"></div>
+    </div>
+
+    <div class="hq-section">
+      <div class="hq-content">
+        <div class="hq-info">
+          <h2>Portor Lighting HQ</h2>
+          <p>540 N Loop Dr, Ontario, CA 91761</p>
+        </div>
+        <div class="hq-contact">
+          <a href="mailto:info@portorindustry.com">info@portorindustry.com</a>
+          <span>323-516-6458</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider">
+      <h4>Technical &amp; Sales Support</h4>
+    </div>
+
+    <div class="contacts-grid">
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Ivan Law</h3>
+          <div class="title">Product Manager</div>
+          <div class="location">Ontario, California</div>
+        </div>
+        <div class="contact-role">
+          Technical Assistance
+        </div>
+        <div class="contact-info">
+          <a href="mailto:ivan@portorindustry.com">ivan@portorindustry.com</a>
+          <span>(323) 516-6458</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Joe Gallegos</h3>
+          <div class="title">Sales Support</div>
+          <div class="location">Ontario, California</div>
+        </div>
+        <div class="contact-role">
+          <span class="territory">West Coast</span><br>
+          <span class="duties">Orders | Quotes | Shipping</span>
+        </div>
+        <div class="contact-info">
+          <a href="mailto:joe@portorindustry.com">joe@portorindustry.com</a>
+          <span>(323) 516-6458 x 111</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Joel Velasco</h3>
+          <div class="title">Sales Support</div>
+          <div class="location">Ontario, California</div>
+        </div>
+        <div class="contact-role">
+          <span class="territory">South | Midwest | Northeast</span><br>
+          <span class="duties">Orders | Quotes | Shipping</span>
+        </div>
+        <div class="contact-info">
+          <a href="mailto:jvelasco@portorindustry.com">jvelasco@portorindustry.com</a>
+          <span>(323) 516-6458 x 103</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Joy "Nio" Gregorio</h3>
+          <div class="title">Sales Support</div>
+          <div class="location">Ontario, California</div>
+        </div>
+        <div class="contact-role">
+          <span class="territory">Interior West</span><br>
+          <span class="duties">Orders | Quotes | Shipping</span>
+        </div>
+        <div class="contact-info">
+          <a href="mailto:nio@portorindustry.com">nio@portorindustry.com</a>
+          <span>(323) 516-6458 x 110</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider">
+      <h4>Regional Sales &amp; Leadership</h4>
+    </div>
+
+    <div class="contacts-grid">
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Nathan Reign</h3>
+          <div class="title">Regional Sales Manager</div>
+          <div class="location">Ontario, California</div>
+        </div>
+        <div class="contact-role">
+          General Inquiries + Strategy<br>
+          <span class="territory">Southern California</span>
+        </div>
+        <div class="contact-info">
+          <a href="mailto:nathan@portorindustry.com">nathan@portorindustry.com</a>
+          <span>909-233-0323</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Sterling Fisher</h3>
+          <div class="title">Regional Sales Manager</div>
+          <div class="location">Little Rock, AR</div>
+        </div>
+        <div class="contact-role">
+          General Inquiries + Strategy<br>
+          <span class="territory">Central Midwest / Central South</span>
+        </div>
+        <div class="contact-info">
+          <a href="mailto:sterling@portorindustry.com">sterling@portorindustry.com</a>
+          <span>(501) 944-8796</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Ed Sahakyan</h3>
+          <div class="title">General Manager</div>
+          <div class="location">Ontario, California</div>
+        </div>
+        <div class="contact-role">
+          General Inquiries + Strategy
+        </div>
+        <div class="contact-info">
+          <a href="mailto:edmond@portorindustry.com">edmond@portorindustry.com</a>
+          <span>(909) 441-5656</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-name">
+          <h3>Brandon McBride</h3>
+          <div class="title">National Sales Director</div>
+          <div class="location">Nashville, TN</div>
+        </div>
+        <div class="contact-role">
+          General Inquiries + Strategy
+        </div>
+        <div class="contact-info">
+          <a href="mailto:brandon@portorindustry.com">brandon@portorindustry.com</a>
+          <span>(615) 613-5427</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
