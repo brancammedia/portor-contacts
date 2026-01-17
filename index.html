@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Portor Lighting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #1a2626 50%, #1a2e2e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            max-width: 220px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #00b4b4;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .directory-card {
+            background: rgba(37, 37, 37, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 36px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .directory-card:hover {
+            background: rgba(42, 42, 42, 0.8);
+            border-color: #00b4b4;
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(0, 180, 180, 0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #00b4b4, #008f8f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+        }
+
+        .card-title {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .directory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .directory-card {
+                padding: 30px 24px;
+            }
+        }
+
+        /* Expanded Contacts Styles */
+        .contacts-card {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .expand-hint {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: #00b4b4;
+            opacity: 0.7;
+        }
+
+        .contacts-expanded {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 180, 180, 0.3);
+            border-radius: 16px;
+            padding: 0;
+            z-index: 1000;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        .contacts-expanded.active {
+            display: block;
+        }
+
+        .contacts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(20px);
+        }
+
+        .contacts-header h3 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0 8px;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #00b4b4;
+        }
+
+        .hq-info {
+            background: rgba(0, 180, 180, 0.1);
+            padding: 20px 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hq-info strong {
+            color: #ffffff;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .hq-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin: 4px 0;
+        }
+
+        .hq-info a {
+            color: #00b4b4;
+            text-decoration: none;
+        }
+
+        .hq-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contacts-section {
+            padding: 20px 28px;
+        }
+
+        .contacts-section h4 {
+            color: #00b4b4;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 180, 180, 0.3);
+        }
+
+        .contact-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-row:last-child {
+            border-bottom: none;
+        }
+
+        .contact-name strong {
+            color: #ffffff;
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-name span {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        .contact-name .location {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+
+        .contact-role {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info a {
+            display: block;
+            color: #00b4b4;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info span {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .contact-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .contact-info {
+                text-align: left;
+            }
+
+            .contacts-expanded {
+                width: 95%;
+                max-height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://portorlighting.com/wp-content/uploads/2025/02/portorlogo.svg" alt="Portor Lighting" class="logo">
+            <h1>Support</h1>
+            <p class="subtitle">Resource Directory</p>
+        </header>
+
+        <div class="directory-grid">
+            <a href="https://portorlighting.com/lighting-layout/" class="directory-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm8 14H5V5h6v14zm8 0h-6v-7h6v7zm0-9h-6V5h6v5z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Layout Request</h2>
+                <p class="card-description">Submit lighting layout requests and project specifications</p>
+            </a>
+
+            <a href="https://portorlighting.com/form/" class="directory-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h3v2H8V9z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Forms</h2>
+                <p class="card-description">Access downloadable forms and documentation</p>
+            </a>
+
+            <a href="https://portorlighting.com/rebate/" class="directory-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 4C5.57 4 4 5.57 4 7.5S5.57 11 7.5 11 11 9.43 11 7.5 9.43 4 7.5 4zm0 5C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm9 4c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm0 5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5.41 20L4 18.59 18.59 4 20 5.41 5.41 20z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Rebate Tool</h2>
+                <p class="card-description">Calculate rebates and manage incentive programs</p>
+            </a>
+
+            <a href="https://portorlighting.com/sales-rep/" class="directory-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Find My Sales Rep</h2>
+                <p class="card-description">Find your local sales representative</p>
+            </a>
+
+            <div class="directory-card contacts-card" onclick="toggleContacts()">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm6-6v-2h-2v2h-2v2h2v2h2v-2h2v-2h-2z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Portor Contacts</h2>
+                <p class="card-description">323-516-6458<br>info@portorindustry.com</p>
+                <span class="expand-hint">Click to expand</span>
+            </div>
+
+            <div class="contacts-expanded" id="contactsExpanded">
+                <div class="contacts-header">
+                    <h3>Portor Lighting Contacts</h3>
+                    <button class="close-btn" onclick="toggleContacts()">×</button>
+                </div>
+                
+                <div class="hq-info">
+                    <strong>Portor Lighting HQ</strong>
+                    <p>540 N Loop Dr, Ontario, CA 91761</p>
+                    <p><a href="mailto:info@portorindustry.com">info@portorindustry.com</a> • 323-516-6458</p>
+                </div>
+
+                <div class="contacts-section">
+                    <h4>Technical & Sales Support</h4>
+                    
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Ivan Law</strong>
+                            <span>Product Manager</span>
+                            <span class="location">Ontario, California</span>
+                        </div>
+                        <div class="contact-role">Technical Assistance</div>
+                        <div class="contact-info">
+                            <a href="mailto:ivan@portorindustry.com">ivan@portorindustry.com</a>
+                            <span>(323) 516-6458</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Joe Gallegos</strong>
+                            <span>Sales Support</span>
+                            <span class="location">Ontario, California</span>
+                        </div>
+                        <div class="contact-role">West Coast<br>Orders | Quotes | Shipping</div>
+                        <div class="contact-info">
+                            <a href="mailto:joe@portorindustry.com">joe@portorindustry.com</a>
+                            <span>(323) 516-6458 x 111</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Joel Velasco</strong>
+                            <span>Sales Support</span>
+                            <span class="location">Ontario, California</span>
+                        </div>
+                        <div class="contact-role">East Coast<br>Orders | Quotes | Shipping</div>
+                        <div class="contact-info">
+                            <a href="mailto:joel@portorindustry.com">joel@portorindustry.com</a>
+                            <span>(323) 516-6458 x 112</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contacts-section">
+                    <h4>Regional Sales & Leadership</h4>
+
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Nathan Reign</strong>
+                            <span>Regional Sales Manager</span>
+                            <span class="location">Ontario, California</span>
+                        </div>
+                        <div class="contact-role">General Inquiries + Strategy<br>Southern California</div>
+                        <div class="contact-info">
+                            <a href="mailto:nathan@portorindustry.com">nathan@portorindustry.com</a>
+                            <span>(909) 233-0323</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Sterling Fisher</strong>
+                            <span>Regional Sales Manager</span>
+                            <span class="location">Little Rock, AR</span>
+                        </div>
+                        <div class="contact-role">General Inquiries + Strategy<br>Central Midwest / Central South</div>
+                        <div class="contact-info">
+                            <a href="mailto:sterling@portorindustry.com">sterling@portorindustry.com</a>
+                            <span>(501) 944-8796</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Ed Sahakyan</strong>
+                            <span>General Manager</span>
+                            <span class="location">Ontario, California</span>
+                        </div>
+                        <div class="contact-role">General Inquiries + Strategy</div>
+                        <div class="contact-info">
+                            <a href="mailto:edmond@portorindustry.com">edmond@portorindustry.com</a>
+                            <span>(909) 441-5656</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Brandon McBride</strong>
+                            <span>National Sales Director</span>
+                            <span class="location">Nashville, TN</span>
+                        </div>
+                        <div class="contact-role">General Inquiries + Strategy</div>
+                        <div class="contact-info">
+                            <a href="mailto:brandon@portorindustry.com">brandon@portorindustry.com</a>
+                            <span>(615) 613-5427</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-name">
+                            <strong>Martin Tsai</strong>
+                            <span>Vice President of Sales</span>
+                            <span class="location">Ontario, California</span>
+                        </div>
+                        <div class="contact-role">General Inquiries + Strategy</div>
+                        <div class="contact-info">
+                            <a href="mailto:martin@portorindustry.com">martin@portorindustry.com</a>
+                            <span>(310) 951-4796</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Portor Lighting &copy; 2026</p>
+        </footer>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="toggleContacts()"></div>
+
+    <script>
+        function toggleContacts() {
+            const expanded = document.getElementById('contactsExpanded');
+            const overlay = document.getElementById('overlay');
+            expanded.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = expanded.classList.contains('active') ? 'hidden' : '';
+        }
+    </script>
+</body>
+</html>
